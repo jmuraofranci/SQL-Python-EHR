@@ -1,11 +1,11 @@
--- 1. Create database (using MySQL or Postgres)
-CREATE DATABASE cancer_db;
+-- 1. Create database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS cancer_db;
 
--- 2. Show databases
-SHOW DATABASES;
+-- 2. Switch to cancer_db database
+USE cancer_db;
 
--- 3. Create patients table
-CREATE TABLE patients(
+-- 3. Create table
+CREATE TABLE IF NOT EXISTS patients (
     Patient_ID VARCHAR(50) PRIMARY KEY,
     Age INT,
     Gender VARCHAR(10),
