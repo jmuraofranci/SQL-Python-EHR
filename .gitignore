@@ -30,6 +30,3 @@ Thumbs.db
 # --- Streamlit / Cache ---
 .streamlit/
 
-# --- Outputs ---
-outputs/*
-!outputs/.gitkeep   # keep empty folder for structure
