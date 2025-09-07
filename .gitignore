@@ -1,0 +1,35 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+*.log
+
+# --- Virtual environment ---
+.venv/
+env/
+venv/
+
+# --- Jupyter / Notebooks ---
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# --- Data ---
+data/*
+!data/.gitkeep   # keep placeholder, ignore actual datasets
+
+# --- Environment variables ---
+.env
+
+# --- OS-specific ---
+.DS_Store
+Thumbs.db
+
+# --- Streamlit / Cache ---
+.streamlit/
+
+# --- Outputs ---
+outputs/*
+!outputs/.gitkeep   # keep empty folder for structure

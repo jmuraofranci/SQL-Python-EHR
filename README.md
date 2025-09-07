@@ -6,7 +6,7 @@ This project demonstrates how to build an end-to-end data pipeline using SQL for
 
 ## Dataset Overview
 
-The dataset comes from Kaggle:  
+The dataset comes from Kaggle:
 [EHR Dataset – Cancer Diagnosis Data](https://www.kaggle.com/datasets/gauravsrivastav2507/ehr-dataset?resource=download) by **Gaurav Srivastav**.
 
 > **Note:** Download the dataset directly from Kaggle and place it inside the `data/` folder before running the pipeline.
@@ -36,6 +36,7 @@ It includes the following columns:
 * Created a relational database (`patients` table).
 * Loaded the dataset into the database using Python (`scripts/import_data.py`).
 * Wrote example queries (`queries.sql`) for:
+
   * Average tumor size by gender and age group
   * Survival rates by treatment type
   * Cross-tabulations of tumor type × biopsy result × survival
@@ -45,9 +46,11 @@ It includes the following columns:
 
 * Connected to the SQL database using **SQLAlchemy + Pandas**.
 * Performed **EDA (Exploratory Data Analysis)**:
+
   * Tumor size distributions
   * Treatment × Response × Survival heatmaps
 * Built **ML models** (Random Forest, Logistic Regression) to predict:
+
   * **Target:** `Survival_Status`
   * **Features:** Age, Gender, Tumor Size, Tumor Type, Treatment
 * Evaluated with **Accuracy, ROC-AUC, Confusion Matrix**.
@@ -55,10 +58,11 @@ It includes the following columns:
 ### 3. Visualization
 
 * **Matplotlib / Seaborn** for plots:
+
   * Tumor size histograms
   * Treatment response × survival heatmaps
 
-### 4. Dashboard 
+### 4. Dashboard
 
 * Built a **Streamlit dashboard (`dashboard.py`)** to interactively explore survival outcomes with filters.
 
@@ -75,7 +79,6 @@ It includes the following columns:
 ## Repository Structure
 
 ```
-
 SQL-Python-EHR/
 ├── data/
 │   └── .gitkeep                      # placeholder (dataset downloaded separately)
@@ -97,8 +100,7 @@ SQL-Python-EHR/
 ├── pipeline.py                       # orchestrates workflow
 ├── dashboard.py                      # Streamlit dashboard
 └── README.md                         # project overview
-
-````
+```
 
 ---
 
@@ -110,13 +112,46 @@ SQL-Python-EHR/
 * MySQL (or Postgres/SQLite with small edits)
 * Python libraries listed in `requirements.txt`
 
+---
+
+### 1. Create and Activate a Virtual Environment
+
+```bash
+# Create virtual environment
+python -m venv .venv
+
+# Activate (Mac/Linux)
+source .venv/bin/activate
+
+# Activate (Windows PowerShell)
+.\.venv\Scripts\activate
+```
+
 Install dependencies:
 
 ```bash
 pip install -r requirements.txt
-````
+```
 
-### Steps
+---
+
+### 2. Create a `.env` File
+
+Inside the project root, create a file called `.env`:
+
+```env
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_HOST=localhost
+DB_NAME=cancer_db
+```
+
+This keeps sensitive credentials out of your code.
+The scripts use `python-dotenv` to load these values automatically.
+
+---
+
+### 3. Steps to Run the Pipeline
 
 1. **Clone this repo**
 
@@ -169,7 +204,7 @@ pip install -r requirements.txt
 * Pipeline building: SQL ↔ Python integration
 * Logging & reproducibility with `pipeline.py`
 * Interactive dashboards with Streamlit
-* Project reproducibility with `requirements.txt` and `.gitignore`
+* Project reproducibility with `requirements.txt`, `.gitignore`, `.env`
 
 ---
 
@@ -189,9 +224,8 @@ pip install -r requirements.txt
   → Ensure you’re using the renamed column `Tumor_Size_cm` in both SQL schema and Python code.
 
 * **Error: `Access denied for user 'root'@'localhost'`**
-  → Check your `.env` file (`DB_USER`, `DB_PASS`) and ensure MySQL is running.
+  → Check your `.env` file (`DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_NAME`) and ensure MySQL is running.
 
 * **Error: `FileNotFoundError: data/cancer_diagnosis_data.csv`**
   → Make sure you downloaded the Kaggle dataset and placed it in the `data/` folder.
-
 
